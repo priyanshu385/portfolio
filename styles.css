@@ -446,6 +446,22 @@ footer {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* More intense shadow on hover */
 }
 
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
 /* --- Responsive Design --- */
 
 /* For tablets and smaller desktops (e.g., <= 1024px) */
@@ -470,6 +486,18 @@ footer {
     margin-top: 40px;
   }
 
+  .skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .skills li {
+    margin: 0;
+  }
   .project,
   .blog-post {
     width: calc(50% - 10px); /* Two columns with gap */
@@ -487,24 +515,58 @@ footer {
 /* For mobile devices (e.g., <= 768px) */
 @media screen and (max-width: 768px) {
   nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 24px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .right {
+    position: fixed;
+    left: -100%;
+    top: 80px;
     flex-direction: column;
-    height: auto;
-    padding: 20px 0;
+    background-color: #1e1e2d;
+    width: 100%;
+    transition: 0.3s;
+    z-index: 100;
+  }
+
+  .right.active {
+    left: 0;
   }
 
   nav ul {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 20px 0;
   }
 
   nav ul li {
-    margin: 10px 0;
+    margin: 15px 0;
   }
 
   .left {
-    margin-bottom: 15px;
-    text-align: center;
+    margin-bottom: 0;
+    text-align: left;
   }
 
   .firstsection > div {
@@ -513,6 +575,14 @@ footer {
 
   .leftsection {
     font-size: 2rem;
+  }
+
+  .skills h2 {
+    font-size: 1.4rem;
+  }
+
+  .skills li {
+    font-size: 0.9rem;
   }
 
   .rightsection img {

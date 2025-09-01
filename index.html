@@ -11,13 +11,18 @@
       <nav>
         <div class="left">Priyanshu's Portfolio</div>
         <div class="right">
-          <ul>
+          <ul class="nav-links">
             <li><a href="#section1">Home</a></li>
             <li><a href="#section2">About</a></li>
             <li><a href="#section3">Projects</a></li>
             <li><a href="#section4">Blog</a></li>
             <li><a href="#section5">Contact me</a></li>
           </ul>
+        </div>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
       </nav>
     </header>
@@ -33,6 +38,8 @@
             <ul>
               <li>Java</li>
               <li>SQL</li>
+              <li>Angular</li>
+              <li>Springboot</li>
               <li>Git</li>
               <li>GitHub</li>
             </ul>
@@ -192,6 +199,23 @@
         backSpeed: 50,
         loop: true,
       });
+    </script>
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".right");
+      const navLinks = document.querySelectorAll(".nav-links li");
+
+      // Toggle menu on hamburger click
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
+      // Close menu when a link is clicked (for single-page navigation)
+      navLinks.forEach(n => n.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      }));
     </script>
   </body>
 </html>
